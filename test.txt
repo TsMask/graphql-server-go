@@ -1,0 +1,54 @@
+# 变量参数
+{
+  "id": "user-1",
+  "user": {
+    "password": "password",
+    "username": "username",
+    "info": {
+      "firstName": "OK"
+    }
+  }
+}
+
+# 查询
+query userR($id: ID!) {
+  hello
+  echo(toEcho: "Golang GraphQL")
+  users(page: 1) {
+    id
+    password
+    username
+    info {
+      id
+    }
+  }
+  user(id: $id) {
+    id
+    password
+    username
+    info {
+      id
+      age
+    }
+  }
+}
+
+# 更新修改删除
+mutation userCUD($id: ID!, $user: UserCreateInput!) {
+  userCreate(arg: $user) {
+    id
+    password
+    username
+    info {
+      id
+      firstName
+    }
+  }
+  userUpdate(id: $id, arg: $user) {
+    id
+    password
+  }
+  # userDelete(id: $id) {
+  #   id
+  # }
+}
