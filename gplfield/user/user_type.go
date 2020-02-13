@@ -22,7 +22,7 @@ var queryType = graphql.NewObject(graphql.ObjectConfig{
 		"info": &graphql.Field{
 			Type:        infoType,
 			Description: "关联用户信息",
-			Resolve:     info,
+			Resolve:     info, // 级联函数调用
 		},
 	},
 })

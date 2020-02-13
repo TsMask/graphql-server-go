@@ -46,7 +46,7 @@ var schemaMutation = graphql.NewObject(graphql.ObjectConfig{
 	Name:        graphql.DirectiveLocationMutation,
 	Description: "提交函数",
 	Fields: graphql.Fields{
-		// 创建新用户
+		// Create 创建新用户
 		"userCreate": user.Create(),
 		// Delete 删除用户
 		"userDelete": user.Delete(),

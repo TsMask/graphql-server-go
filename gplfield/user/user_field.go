@@ -68,6 +68,7 @@ func Create() *graphql.Field {
 		},
 		Resolve: func(params graphql.ResolveParams) (interface{}, error) {
 			arg := params.Args["arg"].(map[string]interface{})
+			/// ...
 			// 随机种子
 			rand.Seed(time.Now().UnixNano())
 			id := strconv.Itoa(rand.Intn(1000))
@@ -88,6 +89,7 @@ func Create() *graphql.Field {
 				"lastName":  info["lastName"],
 			}
 			testUserInfoList = append(testUserInfoList, userInfo)
+			/// ...
 			return testUserList[len(testUserList)-1], nil
 		},
 	}
@@ -105,6 +107,7 @@ func Delete() *graphql.Field {
 		},
 		Resolve: func(params graphql.ResolveParams) (interface{}, error) {
 			id := params.Args["id"].(string)
+			/// ...
 			user := make(map[string]interface{})
 			for i, p := range testUserList {
 				if id == p["id"] {
@@ -114,6 +117,7 @@ func Delete() *graphql.Field {
 					testUserInfoList = append(testUserInfoList[:i], testUserInfoList[i+1:]...)
 				}
 			}
+			/// ...
 			return user, nil
 		},
 	}
@@ -135,6 +139,7 @@ func Update() *graphql.Field {
 		Resolve: func(params graphql.ResolveParams) (interface{}, error) {
 			id := params.Args["id"].(string)
 			arg := params.Args["arg"].(map[string]interface{})
+			/// ....
 			// 更新累了
 			user := make(map[string]interface{})
 			for _, p := range testUserList {
@@ -148,6 +153,7 @@ func Update() *graphql.Field {
 					break
 				}
 			}
+			/// ....
 			return user, nil
 		},
 	}
